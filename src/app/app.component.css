@@ -1,0 +1,14 @@
+.myCustomModalClass .modal-content {
+    min-width: 800px;
+    min-height: 600px;
+    overflow-y: scroll;
+  }
+
+  button{
+      margin-left: 10px;
+  }
+
+.new{
+    margin-bottom: 30px;
+    background-color: lightyellow;
+}
