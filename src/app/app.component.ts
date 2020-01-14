@@ -24,12 +24,18 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.api.getUsers().subscribe(
       (result: any) => this.users = result,
-      (error: any) => this.error = error
+      (error: any) => {
+        console.log(error);
+        this.error = error
+      }
     );
 
     this.api.getTasksStates().subscribe(
       (result: any) => this.states = result,
-      (error: any) => this.error = error
+      (error: any) => {
+        console.log(error);
+        this.error = error
+      }
     );
   }
 
@@ -94,7 +100,7 @@ export class AppComponent implements OnInit {
       this.api.deleteUser(userDelete.id).subscribe(
         (success: any) => {
           //Remove user from the array of users
-          this.users.splice(this.users.findIndex(user => user.id === userDelete.id));
+          this.users.splice(this.users.findIndex(user => user.id === userDelete.id), 1);
           alert("User deleted.")
         },
         (error: any) => this.error = error
@@ -112,7 +118,7 @@ export class AppComponent implements OnInit {
     return true;
   }
 
-  //Add a user
+  //Add a task
   addTask(description: any, state: any) {
     if(this.validateTask(description, state)){
       this.api.addTask(this.currentUser, description.value, state.value).subscribe(
@@ -143,13 +149,13 @@ export class AppComponent implements OnInit {
     }
   }
 
-  //Delete a user
+  //Delete a task
   deleteTask(taskDelete: Task) {
     if(confirm("Are you sure do delete the task '" + taskDelete.description + "'")){
       this.api.deleteTask(taskDelete.id).subscribe(
         (success: any) => {
           //Remove task from the array of tasks
-          this.tasks.splice(this.users.findIndex(task => task.id === taskDelete.id));
+          this.tasks.splice(this.tasks.findIndex(task => task.id === taskDelete.id), 1);
           alert("Task deleted.")
         },
         (error: any) => this.error = error

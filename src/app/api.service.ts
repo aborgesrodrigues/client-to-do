@@ -6,7 +6,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiRoot = 'https://to-do-api-alessandro.herokuapp.com/';
+  private apiRoot = 'http://localhost:8000/';
 
   constructor(private http: HttpClient) { }
 
@@ -34,7 +34,7 @@ export class ApiService {
   }
 
   getTasksStates() {
-    return this.http.get(this.apiRoot.concat('tasks/states'));
+    return this.http.get(this.apiRoot.concat('tasks/states/'));
   }
 
   addTask(user: User, description: string, state: string) {
