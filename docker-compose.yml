@@ -5,6 +5,4 @@ services: # the different images that will be running as containers
       context: .
       dockerfile: local.Dockerfile
     ports:
-      - "8080:8080"
-    volumes: 
-      - .:/root/work
+      - "8000:80"
