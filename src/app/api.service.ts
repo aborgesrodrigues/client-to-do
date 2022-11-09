@@ -6,7 +6,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiRoot = 'http://localhost:8000/';
+  private apiRoot = 'https://to-do-api-alessandro.herokuapp.com/';
 
   constructor(private http: HttpClient) { }
 
